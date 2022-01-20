@@ -1,11 +1,11 @@
-package base_page;
+package baseTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
-import pages.page_objects.LandingPage;
+import pages.pageObjects.LandingPage;
 
 public abstract class BaseTest {
 
@@ -26,8 +26,6 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
         landingPage = new LandingPage(driver);
         driver.get("https://www.expedia.com/");
-
-
     }
 
     @AfterMethod
