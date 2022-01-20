@@ -1,38 +1,36 @@
-package package3;
+package base_page;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import package2.page_objects.StudentRegistrationFormPage;
+import org.testng.annotations.*;
+import pages.page_objects.LandingPage;
 
 public abstract class BaseTest {
 
     protected WebDriver driver;
 
-    protected StudentRegistrationFormPage studentRegistrationFormPage;
+    protected LandingPage landingPage;
 
-    @BeforeAll
+    @BeforeSuite
     public static void setupWebDriverManager() {
         WebDriverManager.chromedriver().setup();
     }
 
-    @BeforeEach
+    @BeforeMethod
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
      //   options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        studentRegistrationFormPage = new StudentRegistrationFormPage(driver);
-        driver.get("https://demoqa.com/automation-practice-form");
+        landingPage = new LandingPage(driver);
+        driver.get("https://www.expedia.com/");
 
 
     }
 
-    @AfterEach
+    @AfterMethod
     public void tearDown() {
         if (driver != null) {
             driver.quit();
